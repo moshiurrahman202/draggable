@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .circle{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: darkgreen;
+        }
+    </style>
+    <title>draggable</title>
+</head>
+<body>
+    <div id="circle" class="circle"></div>
+    <script>
+        let draggableValue;
+        function move(){
+            let element = document.getElementById("circle");
+            element.style.position = "absolute";
+            element.onmousedown = function(){
+                draggableValue = element;
+            } 
+        }
+        move()
+        document.onmouseup = function(e){
+            draggableValue = null
+        }
+        document.onmousemove = function(e){
+            let x = e.pageX;
+            let y = e.pageY;
+            draggableValue.style.left = x + "px";
+            draggableValue.style.top = y + "Px";
+        }
+    </script>
+</body>
+</html>
